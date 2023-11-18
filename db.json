@@ -19,10 +19,16 @@
       "reminder": false
     },
     {
-      "id": 4,
-      "text": "Test to Delete",
-      "day": "May 8th at 10:30pm",
-      "reminder": false
+      "text": "New Task",
+      "day": "Today",
+      "reminder": true,
+      "id": 5
+    },
+    {
+      "text": "Test",
+      "day": "test",
+      "reminder": false,
+      "id": 6
     }
   ]
 }
