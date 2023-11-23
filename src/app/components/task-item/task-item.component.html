@@ -14,10 +14,14 @@
   <p>
     {{ task.day }}
     <fa-icon
-      (click)="onEdit()"
+      (click)="onEditClick()"
       [ngStyle]="{ color: 'teal' }"
       [icon]="faPenSquare"
     ></fa-icon>
   </p>
 </div>
-<app-edit-task *ngIf="editing" [task]="task" />
+<app-edit-task
+  *ngIf="editing"
+  [task]="task"
+  (onUpdateDayClick)="onUpdateTaskDay(task)"
+/>

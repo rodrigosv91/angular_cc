@@ -11,6 +11,7 @@ export class TaskItemComponent {
   @Input() task: Task;
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();
   @Output() onToggleReminder: EventEmitter<Task> = new EventEmitter();
+  @Output() onUpdateTask: EventEmitter<Task> = new EventEmitter();
   faTimes = faTimes;
   faPenSquare = faPenSquare;
   editing: boolean = false;
@@ -23,7 +24,12 @@ export class TaskItemComponent {
     this.onToggleReminder.emit(task);
   }
 
-  onEdit() {
+  onEditClick() {
     this.editing = !this.editing;
+  }
+
+  onUpdateTaskDay(task: Task) {
+    this.onUpdateTask.emit(task);
+    this.editing = false;
   }
 }

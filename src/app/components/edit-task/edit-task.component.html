@@ -1,2 +1,4 @@
-<input [(ngModel)]="editInputValue" />
-<button (click)="saveEdit()">Salvar</button>
+<div class="form-control">
+  <input [(ngModel)]="editDayInput" (keyup.enter)="saveEdit(task)" />
+  <button (click)="saveEdit(task)" class="btn btn-block">Save</button>
+</div>

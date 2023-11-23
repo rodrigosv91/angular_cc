@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../Task';
 
 @Component({
@@ -8,11 +8,15 @@ import { Task } from '../../Task';
 })
 export class EditTaskComponent {
   @Input() task: Task;
-  editInputValue: string = '';
+  @Output() onUpdateDayClick: EventEmitter<Task> = new EventEmitter();
+  editDayInput: string = '';
 
   ngOnInit() {
-    this.editInputValue = this.task.day;
+    this.editDayInput = this.task.day;
   }
 
-  saveEdit() {}
+  saveEdit(task: Task) {
+    task.day = this.editDayInput;
+    this.onUpdateDayClick.emit(task);
+  }
 }
