@@ -11,5 +11,13 @@
       [icon]="faTimes"
     ></fa-icon>
   </h3>
-  <p>{{ task.day }}</p>
+  <p>
+    {{ task.day }}
+    <fa-icon
+      (click)="onEdit()"
+      [ngStyle]="{ color: 'teal' }"
+      [icon]="faPenSquare"
+    ></fa-icon>
+  </p>
 </div>
+<app-edit-task *ngIf="editing" [task]="task" />
