@@ -19,6 +19,11 @@
       [icon]="faPenSquare"
     ></fa-icon>
   </p>
+  <p>
+    <a [routerLink]="['/task', task.id]" (click)="toggleAddButton()"
+      >View Details</a
+    >
+  </p>
 </div>
 <app-edit-task
   *ngIf="editing"

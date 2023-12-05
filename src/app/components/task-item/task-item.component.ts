@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../Task';
 import { faTimes, faPenSquare } from '@fortawesome/free-solid-svg-icons';
+import { UiService } from '../../services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-item',
@@ -15,6 +17,14 @@ export class TaskItemComponent {
   faTimes = faTimes;
   faPenSquare = faPenSquare;
   editing: boolean = false;
+  subscription: Subscription;
+  showAddTask: boolean = false;
+
+  constructor(private uiService: UiService) {
+    this.subscription = this.uiService
+      .onToggle()
+      .subscribe((value) => (this.showAddTask = value));
+  }
 
   onDelete(task: Task) {
     this.onDeleteTask.emit(task);
@@ -31,5 +41,11 @@ export class TaskItemComponent {
   onUpdateTaskDay(task: Task) {
     this.onUpdateTask.emit(task);
     this.editing = false;
+  }
+
+  toggleAddButton() {
+    if (this.showAddTask) {
+      this.uiService.toggleAddTask();
+    }
   }
 }
