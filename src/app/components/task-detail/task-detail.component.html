@@ -1,6 +1,11 @@
-<div>
+<div *ngIf="loading; else taskDetail">
+  <div>
+    <h3>Loading...</h3>
+  </div>
+</div>
+<ng-template #taskDetail>
   <p>{{ pathname }}</p>
   <h3>{{ task.text }}</h3>
   <p>{{ task.day }}</p>
   <button class="btn" (click)="goBack()">Go Back</button>
-</div>
+</ng-template>

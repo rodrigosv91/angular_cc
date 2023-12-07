@@ -12,6 +12,7 @@ import { TaskService } from '../../services/task.service';
 export class TaskDetailComponent implements OnInit {
   @Input() id: string = '';
   pathname: string = '';
+  loading: boolean = true;
 
   task: Task;
 
@@ -22,7 +23,10 @@ export class TaskDetailComponent implements OnInit {
 
   ngOnInit(): void {
     //const id = this.route.snapshot.paramMap.get('id') as string;
-    this.taskService.getTask(this.id).subscribe((task) => (this.task = task));
+    this.taskService.getTask(this.id).subscribe((task) => {
+      this.task = task;
+      this.loading = false;
+    });
     this.pathname = this.location.path();
   }
 
